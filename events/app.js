@@ -2,7 +2,7 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: null,
+      name: '',
       confirmedName: null,
     };
   },
@@ -24,6 +24,16 @@ const app = Vue.createApp({
     },
     submitForm(e) {
       console.log('form submitted');
+    },
+    resetInput(e) {
+      this.name = null;
+    },
+  },
+  computed: {
+    fullName() {
+      console.log('runs');
+      if (this.name === '') return '';
+      return this.name + ' ' + 'Egelschlager';
     },
   },
 });

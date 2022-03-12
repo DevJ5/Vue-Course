@@ -23,9 +23,12 @@
       <!-- <button v-on:click="increment">Add</button> -->
       <!-- <button v-on:click="counter++">Add</button> -->
       <button @click="decrement">Remove</button>
+      <p v-once>Starting Counter: {{counter}}</p>
       <p>Result: {{ counter }}</p>
-      <input type="text" @input="changeName" v-on:keyup.enter="confirmInput" />
-      <p>Your name is: {{confirmedName}}</p>
+
+      <input type="text" v-model="name" v-on:keyup.enter="confirmInput" />
+      <button @click="resetInput">Reset input</button>
+      <p>Your name is: {{fullName}}</p>
       <form v-on:submit.prevent="submitForm">
         <input type="text" />
         <button>Sign up</button>
@@ -33,3 +36,4 @@
     </section>
   </body>
 </html>
+<!-- v-model is shortcut for v-bind:value and v-on:input -->
