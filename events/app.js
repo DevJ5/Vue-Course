@@ -2,8 +2,8 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: '',
-      confirmedName: null,
+      firstName: '',
+      confirmedName: '',
     };
   },
   methods: {
@@ -15,25 +15,36 @@ const app = Vue.createApp({
     decrement() {
       this.counter--;
     },
-    changeName(e) {
-      this.name = e.target.value;
-    },
     confirmInput(e) {
       this.confirmedName = this.name;
-      e.target.value = null;
+      this.name = '';
     },
     submitForm(e) {
       console.log('form submitted');
     },
     resetInput(e) {
-      this.name = null;
+      this.firstName = '';
     },
   },
   computed: {
     fullName() {
-      console.log('runs');
-      if (this.name === '') return '';
-      return this.name + ' ' + 'Egelschlager';
+      console.log('fullName computed runs');
+      if (this.firstName === '') return '';
+      // return 'a';
+      return this.firstName + ' ' + 'Egelschlager';
+    },
+  },
+  // watch can also watch computed variables and will run when the return value changes
+  watch: {
+    firstName(newValue, oldValue) {
+      setTimeout(() => {
+        console.log(
+          `Name changed from ${oldValue} to ${newValue}, send httprequests. ${this.fullName}`
+        );
+      }, 2000);
+    },
+    fullName(newValue, oldValue) {
+      console.log('fullName watcher runs', newValue, oldValue);
     },
   },
 });
