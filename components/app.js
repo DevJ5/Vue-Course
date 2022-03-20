@@ -23,15 +23,7 @@ const app = Vue.createApp({
 
 app.component('friend-contact', {
   props: ['friend'],
-  template: `    
-    <li>
-    <h2>{{friend.name}}</h2>
-    <button @click="toggleDetails">Show Details</button>
-    <ul v-if="showDetails">
-      <li><strong>Phone:</strong> {{friend.phone}}</li>
-      <li><strong>Email:</strong> {{friend.email}}</li>
-    </ul>
-    </li>`,
+
   data() {
     return {
       showDetails: false,

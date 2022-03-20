@@ -18,10 +18,16 @@
     </header>
     <section id="app">
       <ul>
-        <friend-contact
-          v-for="friend in friends"
-          :friend="friend"
-        ></friend-contact>
+        <friend-contact v-for="friend in friends" :friend="friend">
+          <li>
+            <h2>{{friend.name}}</h2>
+            <button @click="toggleDetails">Show Details</button>
+            <ul v-if="showDetails">
+              <li><strong>Phone:</strong> {{friend.phone}}</li>
+              <li><strong>Email:</strong> {{friend.email}}</li>
+            </ul>
+          </li></friend-contact
+        >
       </ul>
     </section>
   </body>
